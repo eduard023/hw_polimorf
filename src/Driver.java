@@ -3,10 +3,12 @@ public class Driver<T extends Car & Competing> {
     private String driverLicense;
     private double experience;
 
-    public Driver(String fullName, String driverLicense, double experience) {
+    private T transport;
+    public Driver(String fullName, String driverLicense, double experience, T transport) {
         this.fullName = fullName;
         this.driverLicense = driverLicense;
         this.experience = experience;
+        this.transport = transport;
     }
 
     public String getFullName() {
@@ -45,15 +47,15 @@ public class Driver<T extends Car & Competing> {
         }
     }
 
-    public void toMove(){
-        System.out.println(fullName + " начал движение");
+    public void toMove(T transport){
+        System.out.println(fullName + "начал движение");
     }
 
-    public void stop(){
-        System.out.println(fullName + " остановился");
+    public void stop(T transport){
+
     }
 
-    public void refuel(){
-        System.out.println(fullName + " заправил авто");
+    public void refuel(T transport){
+
     }
 }
