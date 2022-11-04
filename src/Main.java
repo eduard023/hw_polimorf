@@ -23,6 +23,7 @@ public class Main {
         System.out.println("Водитель "+ivanov.getFullName()  +" управляет автомобилем "+ isuzu.getBrand()+ " "+isuzu.getModel() +" и будет участвовать в заезде");
         System.out.println("Водитель "+petrov.getFullName()  +" управляет автомобилем "+ kia.getBrand()+ " "+kia.getModel() +" и будет участвовать в заезде");
         System.out.println("Водитель "+sidorov.getFullName()  +" управляет автомобилем "+ maz.getBrand()+ " "+maz.getModel() +" и будет участвовать в заезде");
+        ivanov.g;
 
     }
 }

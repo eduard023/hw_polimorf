@@ -1,4 +1,4 @@
-public class Driver<T extends Car> {
+public class Driver<T extends Car & Competing> {
     private String fullName;
     private String driverLicense;
     private double experience;
@@ -46,14 +46,14 @@ public class Driver<T extends Car> {
     }
 
     public void toMove(){
-
+        System.out.println(fullName + " начал движение");
     }
 
     public void stop(){
-
+        System.out.println(fullName + " остановился");
     }
 
     public void refuel(){
-
+        System.out.println(fullName + " заправил авто");
     }
 }

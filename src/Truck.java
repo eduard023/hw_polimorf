@@ -5,12 +5,12 @@ public class Truck extends Car implements Competing{
 
     @Override
     public void startMoving() {
-
+        System.out.println(getBrand() + " " + getModel() + " начал движение");
     }
 
     @Override
     public void finishPacing() {
-
+        System.out.println(getBrand() + " " + getModel() + " закончил движение");
     }
 
     @Override
@@ -25,6 +25,6 @@ public class Truck extends Car implements Competing{
 
     @Override
     public void getMaxSpeed() {
-        System.out.println("Максимальная скорость: ");
+        System.out.println("Максимальная скорость: " + getBrand() + " " + getModel());
     }
 }
