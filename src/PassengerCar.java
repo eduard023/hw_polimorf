@@ -1,6 +1,19 @@
 public class PassengerCar extends Car implements Competing{
-    public PassengerCar(String brand, String model, double engineVolume) {
+
+    private TypeOfBody typeOfBody;
+
+    public enum TypeOfBody{SEDAN, HATCHBACK, COUPE, STATION_WAGON, OFFROADER, CROSSOVER, PICKUP_TRUCK, VAN, MINIVAN}
+    public PassengerCar(String brand, String model, double engineVolume, TypeOfBody typeOfBody) {
         super(brand, model, engineVolume);
+        this.typeOfBody = typeOfBody;
+    }
+
+    public TypeOfBody getTypeOfBody() {
+        return typeOfBody;
+    }
+
+    public void setTypeOfBody(TypeOfBody typeOfBody) {
+        this.typeOfBody = typeOfBody;
     }
 
     @Override
@@ -11,6 +24,15 @@ public class PassengerCar extends Car implements Competing{
     @Override
     public void finishPacing() {
         System.out.println(getBrand() + " " + getModel() + " закончил движение");
+    }
+
+    @Override
+    public void printType() {
+        if(typeOfBody == null){
+            System.out.println("Данных по авто не достаточно");
+        }else {
+            System.out.println("Тип кузова авто: " + typeOfBody);
+        }
     }
 
     @Override

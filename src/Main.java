@@ -1,19 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        Bus scania = new Bus("Скания", "Авено", 3.5);
-        Bus isuzu = new Bus("Исузу", "Богдан", 2.7);
-        Bus ford = new Bus("Форд", "Транзит", 3.0);
-        Bus hyundai = new Bus("Хондай", "Каунтри", 3.2);
+        Bus scania = new Bus("Скания", "Авено", 3.5, Bus.Capacity.ESPECIALLY_SMALL);
+        Bus isuzu = new Bus("Исузу", "Богдан", 2.7, Bus.Capacity.ESPECIALLY_BIG);
+        Bus ford = new Bus("Форд", "Транзит", 3.0, Bus.Capacity.BIG);
+        Bus hyundai = new Bus("Хондай", "Каунтри", 3.2, Bus.Capacity.SMALL);
 
-        PassengerCar lada = new PassengerCar("Лада", "Гранта", 1.7);
-        PassengerCar bmw = new PassengerCar("Бмв", "", 3.0);
-        PassengerCar kia = new PassengerCar("Киа", "Спортэйдж", 2.4);
-        PassengerCar audi = new PassengerCar("Ауди", "А8", 3.0);
+        PassengerCar lada = new PassengerCar("Лада", "Гранта", 1.7, PassengerCar.TypeOfBody.SEDAN);
+        PassengerCar bmw = new PassengerCar("Бмв", "3", 3.0, PassengerCar.TypeOfBody.COUPE);
+        PassengerCar kia = new PassengerCar("Киа", "Спортэйдж", 2.4, PassengerCar.TypeOfBody.CROSSOVER);
+        PassengerCar audi = new PassengerCar("Ауди", "А8", 3.0, PassengerCar.TypeOfBody.STATION_WAGON);
 
-        Truck kamaz = new Truck("Камаз", "6580", 12);
-        Truck howo = new Truck("Хово", "HW76", 9.7);
-        Truck volvo = new Truck("Вольво", "FL", 7.2);
-        Truck maz = new Truck("Маз", "5550", 7.2);
+        Truck kamaz = new Truck("Камаз", "6580", 12, Truck.LoadCapacity.N2);
+        Truck howo = new Truck("Хово", "HW76", 9.7, Truck.LoadCapacity.N3);
+        Truck volvo = new Truck("Вольво", "FL", 7.2, Truck.LoadCapacity.N1);
+        Truck maz = new Truck("Маз", "5550", 7.2, Truck.LoadCapacity.N2);
         volvo.pitStop();
 
         DriverD ivanov = new DriverD("Иванов Алексей Владимирович", "D", 2.5, isuzu);
@@ -23,8 +23,15 @@ public class Main {
         System.out.println("Водитель "+ivanov.getFullName()  +" управляет автомобилем "+ isuzu.getBrand()+ " "+isuzu.getModel() +" и будет участвовать в заезде");
         System.out.println("Водитель "+petrov.getFullName()  +" управляет автомобилем "+ kia.getBrand()+ " "+kia.getModel() +" и будет участвовать в заезде");
         System.out.println("Водитель "+sidorov.getFullName()  +" управляет автомобилем "+ maz.getBrand()+ " "+maz.getModel() +" и будет участвовать в заезде");
-        sidorov.toMove(maz);
+        printInfo(ivanov, isuzu);
 
+    }
+
+    private static void printInfo(Driver<?> driver, Car car){
+        System.out.println("Водитель " + driver.getFullName()+
+                " управляет автомобилем " + car.getBrand() + " " + car.getModel()+
+                "и будет участвовать в заезде.");
+        car.printType();
     }
 
 }

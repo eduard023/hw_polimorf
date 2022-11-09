@@ -58,4 +58,6 @@ public abstract class Car {
     }
     public abstract void startMoving();
     public abstract void finishPacing();
+
+    public abstract void printType();
 }
