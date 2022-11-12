@@ -6,9 +6,9 @@ public class Driver<T extends Car & Competing> {
     private T transport;
     public Driver(String fullName, String driverLicense, double experience, T transport) {
         this.fullName = fullName;
-        this.driverLicense = driverLicense;
         this.experience = experience;
         this.transport = transport;
+        setDriverLicense(driverLicense);
     }
 
     public String getFullName() {
@@ -28,8 +28,8 @@ public class Driver<T extends Car & Competing> {
     }
 
     public void setDriverLicense(String driverLicense) {
-        if (driverLicense == null || driverLicense.isBlank() || driverLicense.isEmpty()) {
-            this.fullName = "Некоректные данные";
+        if (driverLicense == null) {
+            throw new IllegalArgumentException("Необходимо указать категорию прав!");
         } else {
             this.fullName = fullName;
         }

@@ -36,6 +36,11 @@ public class PassengerCar extends Car implements Competing{
     }
 
     @Override
+    public boolean passDiagnostic() {
+        return Math.random() > 0.6;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println(getBrand() +" "+ getModel() + " на пит-стопе");
     }

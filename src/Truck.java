@@ -58,6 +58,11 @@ public class Truck extends Car implements Competing{
     }
 
     @Override
+    public boolean passDiagnostic() {
+        return Math.random() > 0.75;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println(getBrand() + " " + getModel() + " на пит-стопе");
     }

@@ -14,7 +14,11 @@ public class Main {
         Truck howo = new Truck("Хово", "HW76", 9.7, Truck.LoadCapacity.N3);
         Truck volvo = new Truck("Вольво", "FL", 7.2, Truck.LoadCapacity.N1);
         Truck maz = new Truck("Маз", "5550", 7.2, Truck.LoadCapacity.N2);
-        volvo.pitStop();
+
+        passDiagnostic(scania, isuzu, ford,hyundai,
+                lada, bmw, kia, audi,
+                kamaz, howo, volvo, maz);
+
 
         DriverD ivanov = new DriverD("Иванов Алексей Владимирович", "D", 2.5, isuzu);
         DriverB petrov = new DriverB("Петров Олег Антонович", "B", 1.4, kia);
@@ -27,11 +31,28 @@ public class Main {
 
     }
 
-    private static void printInfo(Driver<?> driver, Car car){
-        System.out.println("Водитель " + driver.getFullName()+
-                " управляет автомобилем " + car.getBrand() + " " + car.getModel()+
-                "и будет участвовать в заезде.");
-        car.printType();
+    private static void passDiagnostic(Car... cars){
+        for (Car car : cars) {
+            service(car);
+        }
     }
+
+    private static void service(Car car) {
+        try {
+            if (!car.passDiagnostic()) {
+                throw new RuntimeException("Автомобиль " + car.getBrand() + " " + car.getModel() + " не прошел диагностику.");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+        private static void printInfo (Driver < ? > driver, Car car){
+            System.out.println("Водитель " + driver.getFullName() +
+                    " управляет автомобилем " + car.getBrand() + " " + car.getModel() +
+                    "и будет участвовать в заезде.");
+            car.printType();
+        }
+
 
 }
