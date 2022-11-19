@@ -63,6 +63,11 @@ public class Truck extends Car implements Competing{
     }
 
     @Override
+    public void repair() {
+        System.out.println("Грузовик " + getBrand() + " " + getModel() + " починена!");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println(getBrand() + " " + getModel() + " на пит-стопе");
     }

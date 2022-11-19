@@ -31,7 +31,7 @@ public class Driver<T extends Car & Competing> {
         if (driverLicense == null) {
             throw new IllegalArgumentException("Необходимо указать категорию прав!");
         } else {
-            this.fullName = fullName;
+            this.driverLicense = driverLicense;
         }
     }
 
@@ -57,5 +57,10 @@ public class Driver<T extends Car & Competing> {
 
     public void refuel(T transport){
 
+    }
+
+    @Override
+    public String toString() {
+        return fullName + " , стаж вождения " + experience + " лет, категория " + driverLicense;
     }
 }

@@ -1,7 +1,12 @@
+import java.util.*;
+
 public abstract class Car {
     private String brand;
     private String model;
     private double engineVolume;
+    private final Set<Driver<?>> drivers = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
     public Car(String brand, String model, double engineVolume) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
@@ -33,6 +38,18 @@ public abstract class Car {
         }
     }
 
+    public Set<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public Set<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
     public String getModel() {
         return model;
     }
@@ -56,10 +73,35 @@ public abstract class Car {
             this.engineVolume = engineVolume;
         }
     }
+
+    public void addDriver(Driver<?>... drivers){
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+    public void addMechanic(Mechanic<?>... mechanics){
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors){
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
     public abstract void startMoving();
     public abstract void finishPacing();
 
     public abstract void printType();
 
     public abstract boolean passDiagnostic();
+
+    public abstract void repair();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(brand, car.brand) && Objects.equals(model, car.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model);
+    }
 }

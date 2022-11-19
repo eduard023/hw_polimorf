@@ -41,6 +41,11 @@ public class PassengerCar extends Car implements Competing{
     }
 
     @Override
+    public void repair() {
+        System.out.println("Машина " + getBrand() + " " + getModel() + " починена!");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println(getBrand() +" "+ getModel() + " на пит-стопе");
     }
@@ -54,4 +59,6 @@ public class PassengerCar extends Car implements Competing{
     public void getMaxSpeed() {
         System.out.println("Максимальная скорость: " + getBrand() + " " + getModel());
     }
+
+
 }
