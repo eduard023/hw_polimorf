@@ -1,14 +1,12 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Car {
     private String brand;
     private String model;
     private double engineVolume;
-    private final List<Driver<?>> drivers = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
     public Car(String brand, String model, double engineVolume) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
@@ -40,15 +38,15 @@ public abstract class Car {
         }
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
@@ -93,4 +91,17 @@ public abstract class Car {
     public abstract boolean passDiagnostic();
 
     public abstract void repair();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(brand, car.brand) && Objects.equals(model, car.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model);
+    }
 }

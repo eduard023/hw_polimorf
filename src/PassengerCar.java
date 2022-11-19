@@ -59,4 +59,6 @@ public class PassengerCar extends Car implements Competing{
     public void getMaxSpeed() {
         System.out.println("Максимальная скорость: " + getBrand() + " " + getModel());
     }
+
+
 }
